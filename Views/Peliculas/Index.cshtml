@@ -1,0 +1,28 @@
+@model List<FestivalCine.Models.Pelicula>
+@{
+    ViewData["Title"] = "Cartelera";
+}
+
+<h1 class="mb-4">🎬 Cartelera del Festival</h1>
+
+<div class="row">
+    @foreach (var p in Model)
+    {
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Titulo</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@p.Director · @p.Genero</h6>
+                    <p class="card-text">
+                        @p.DuracionMinutos min<br />
+                        @p.Funcion.ToString("dd/MM/yyyy HH:mm")<br />
+                        <strong>@p.PrecioBoleto.ToString("C0")</strong>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-dark w-100" asp-controller="Reservas" asp-action="Crear" asp-route-peliculaId="@p.Id">Reservar</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

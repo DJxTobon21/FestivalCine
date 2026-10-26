@@ -1,0 +1,17 @@
+@model FestivalCine.Models.Reserva
+@{
+    ViewData["Title"] = "Reserva confirmada";
+    var pelicula = (FestivalCine.Models.Pelicula)ViewBag.Pelicula;
+}
+
+<div class="alert alert-success">
+    <h4 class="alert-heading">¡Reserva #@Model.Id confirmada!</h4>
+    <p>
+        @Model.NombreAsistente, reservaste <strong>@Model.CantidadBoletos</strong> boleto(s)
+        para <strong>@pelicula.Titulo</strong>.
+    </p>
+    <hr />
+    <p class="mb-0">Total a pagar: <strong>@Model.Total.ToString("C0")</strong></p>
+</div>
+
+<a asp-controller="Peliculas" asp-action="Index" class="btn btn-outline-dark">Volver a la cartelera</a>
