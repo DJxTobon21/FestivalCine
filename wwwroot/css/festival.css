@@ -1,0 +1,5 @@
+body { background-color: #f8f5f0; }
+h1 { font-weight: 700; letter-spacing: 0.5px; }
+.card { border: 0; border-top: 4px solid #b8860b; transition: transform 0.15s; }
+.card:hover { transform: translateY(-4px); }
+.navbar-brand { font-weight: 700; }

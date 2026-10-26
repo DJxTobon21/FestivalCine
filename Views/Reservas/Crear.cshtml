@@ -22,8 +22,12 @@
 
     <div class="mb-3">
         <label asp-for="PeliculaId" class="form-label">Película</label>
-        <select asp-for="PeliculaId" asp-items="ViewBag.Peliculas" class="form-select">
-            <option value="">-- Selecciona --</option>
+        <select asp-for="PeliculaId" class="form-select">
+        <option value="">-- Selecciona --</option>
+        @foreach (var p in (List<FestivalCine.Models.Pelicula>)ViewBag.ListaPeliculas)
+            {
+        <option value="@p.Id" data-precio="@p.PrecioBoleto.ToString(System.Globalization.CultureInfo.InvariantCulture)">@p.Titulo</option>
+            }
         </select>
         <span asp-validation-for="PeliculaId" class="text-danger"></span>
     </div>
@@ -33,10 +37,12 @@
         <input asp-for="CantidadBoletos" type="number" class="form-control" />
         <span asp-validation-for="CantidadBoletos" class="text-danger"></span>
     </div>
+    <p class="fs-5">Total estimado: <strong id="totalEstimado">$ 0</strong></p>
 
     <button type="submit" class="btn btn-primary">Confirmar reserva</button>
 </form>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/festival.js" asp-append-version="true"></script>
 }
