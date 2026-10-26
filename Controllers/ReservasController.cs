@@ -1,7 +1,6 @@
 using FestivalCine.Models;
 using FestivalCine.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FestivalCine.Controllers;
 
@@ -55,6 +54,6 @@ public class ReservasController : Controller
 
     private void CargarPeliculas()
     {
-        ViewBag.Peliculas = new SelectList(_servicio.ObtenerPeliculas(), "Id", "Titulo");
+        ViewBag.ListaPeliculas = _servicio.ObtenerPeliculas();
     }
 }
